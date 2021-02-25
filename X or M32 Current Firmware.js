@@ -9,6 +9,7 @@
 const timeFont = Font.boldSystemFont(12);
 const normalFont = Font.mediumSystemFont(12);
 const titleFont = Font.boldSystemFont(12);
+const smallFont = Font.mediumSystemFont(8);
 var url = "https://www.midasconsoles.com/.rest/musictribe/v1/downloadcenter/solr-dldatatable?brandName=midas&modelCode=P0B3I&type=Software&subtype=Firmware&catName=C-MIDAS-MIXINGCONSOLES-DIGITALMIXERS&sEcho=6&iColumns=6&sColumns=%2C%2C%2C%2C%2C&iDisplayStart=0&iDisplayLength=15";
 var url2 = "https://www.midasconsoles.com/.rest/musictribe/v1/downloadcenter/solr-dldatatable?brandName=midas&modelCode=P0B3I&type=Software&subtype=Mac&catName=C-MIDAS-MIXINGCONSOLES-DIGITALMIXERS&sEcho=6&iColumns=6&sColumns=%2C%2C%2C%2C%2C&iDisplayStart=0&iDisplayLength=15";
 let data = await getData();
@@ -18,27 +19,10 @@ if (config.runsInWidget) {
   Script.setWidget(widget);
   Script.complete();
 } else {
+  console.log(printDate());
   await showTableHTML(data);
   //Safari.open(`shortcuts://run-shortcut?name=SpringBoard`)
 }
-//console.log(data);
-
-/* async function showTable(midbehvers) {
-  let isIphone = Device.isPhone();
-
-  let table = new UITable();
-  for (const d of midbehvers) {
-    let row = new UITableRow();
-    let midbehstop = d.releaseNotes;
-    console.log(midbehstop);
-    let cell = row.addText(midbehstop);
-    row.height = (isIphone ? 30 : 22) * d.stops.length / 3;
-    cell.titleFont = titleFont;
-    cell.subtitleFont = normalFont;
-    table.addRow(row);
-  }
-  return table
-} */
 
 async function showTableHTML(midasversions) {
   let mv = JSON.parse(midasversions);
@@ -79,20 +63,16 @@ async function getData() {
 async function createWidget(midasversions) {
   let mv = JSON.parse(midasversions);
   const backGradient = new LinearGradient();
-  backGradient.colors = [new Color("green"),new Color("white")];
+  backGradient.colors = [new Color("yellow"),new Color("white")];
   backGradient.locations = [0, 1];
   let files = FileManager.iCloud();
   const path = files.documentsDirectory() + "/header-logo-midas.svg";
-  //console.log("Logopfad: " + path);
+  console.log("Logopfad: " + path);
   const logoPNG = Image.fromFile(path);
   
-  let wide = config.widgetFamily !== "small";
   let widget = new ListWidget();
   widget.backgroundGradient = backGradient;
   widget.backgroundImage = logoPNG;
-  if (! wide) {
-    widget.setPadding(8, 5, 3, 3);
-  }
   let stack = widget.addStack();
   stack.layoutVertically();
   
@@ -101,44 +81,24 @@ async function createWidget(midasversions) {
   title.font = titleFont;
   titleLine.addSpacer();
  
-/* let logo = titleLine.addImage(logoPNG);
-  if (! wide) {
-    logo.imageSize = new Size(20, 20);
-  } */
-  
-  //stack.addSpacer(10);
-  
-  
-    //let line = stack.addStack();
-    if (wide) {
-      let firmText = stack.addStack();
-      let firmware = stack.addStack();
-      let softText = stack.addStack();
-      let Software = stack.addStack();
-      let FirmText = firmText.addText('Firmware');
-      let midfirmware = firmware.addText(`${mv.FirmwareVersion}`);
-      let SoftText = softText.addText('M32-Edit');
-      let midSoft = Software.addText(`${mv.SoftwareVersion}`);
-      //Dies ist ein TEst
-      FirmText.font = titleFont;
-      midfirmware.font = normalFont;
-      SoftText.font = timeFont;
-      midSoft.font = normalFont;
-      //firmware.addSpacer();
-    }
+  let firmText = stack.addStack();
+  let firmware = stack.addStack();
+  let softText = stack.addStack();
+  let Software = stack.addStack();
+  let FirmText = firmText.addText('Firmware');
+  let midfirmware = firmware.addText(`${mv.FirmwareVersion}`);
+  let SoftText = softText.addText('M32-Edit');
+  let midSoft = Software.addText(`${mv.SoftwareVersion}`);
+  let spacer = stack.addStack();
+  let dateTime = stack.addStack();
+  let TextTime = dateTime.addText("Reloaded: " + printDate());
+  TextTime.font = smallFont;
+  FirmText.font = titleFont;
+  midfirmware.font = normalFont;
+  SoftText.font = timeFont;
+  midSoft.font = normalFont;
   return widget;
 }
-
-/* function createLine(parent, data, wide) {
-  let line = parent.addStack(); 
-  if (wide) {
-    let firmware = line.addStack();
-    let train = firmware.addText("Midas Firmware");
-    train.font = normalFont;
-    firmware.addSpacer();
-  }
-  return line;
-} */
 
 function taggify(el, str, atts) {
   let attributes = [];
@@ -151,4 +111,23 @@ function taggify(el, str, atts) {
     + `>${str}</${el}>`;
   //console.log(res)
   return res
+}
+
+function printDate() {
+  let datum = new Date();
+  console.log(datum);
+  thisYear = datum.getFullYear();
+  console.log(thisYear);
+  thisMonth = datum.getMonth()+1;
+  console.log(thisMonth);
+  thisDay = datum.getDate();
+  console.log(thisDay);
+  thisHour = datum.getHours();
+  console.log(thisHour);
+  thisMinute = datum.getMinutes();
+  console.log(thisMinute);
+  thisSecond = datum.getSeconds();
+  console.log(thisSecond);
+  DatumString = `${thisYear}-${thisMonth}-${thisDay} ${thisHour}:${thisMinute}:${thisSecond}`;
+  return DatumString
 }
