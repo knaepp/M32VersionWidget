@@ -1,6 +1,6 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
-// icon-color: light-gray; icon-glyph: magic;
+// icon-color: light-gray; icon-glyph: mortar-pestle;
 // share-sheet-inputs: url, file-url;
 // Created by Matthias Knäpper, IT Knäpper, Dortmund;
 // 2021, Dortmund;
@@ -71,8 +71,8 @@ async function createWidget(midasversions) {
   const logoPNG = Image.fromFile(path);
   
   let widget = new ListWidget();
-  widget.backgroundGradient = backGradient;
-  widget.backgroundImage = logoPNG;
+//  widget.backgroundGradient = backGradient;
+  //widget.backgroundImage = logoPNG;
   let stack = widget.addStack();
   stack.layoutVertically();
   
