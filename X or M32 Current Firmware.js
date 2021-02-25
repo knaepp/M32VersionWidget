@@ -23,7 +23,7 @@ if (config.runsInWidget) {
 }
 console.log(data);
 
-async function showTable(midbehvers) {
+/* async function showTable(midbehvers) {
   let isIphone = Device.isPhone();
 
   let table = new UITable();
@@ -38,7 +38,8 @@ async function showTable(midbehvers) {
     table.addRow(row);
   }
   return table
-}
+} */
+
 async function showTableHTML(midasversions) {
   let mv = JSON.parse(midasversions);
   let tBody = [];
