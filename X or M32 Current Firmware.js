@@ -12,7 +12,7 @@ const titleFont = Font.boldSystemFont(12);
 var url = "https://www.midasconsoles.com/.rest/musictribe/v1/downloadcenter/solr-dldatatable?brandName=midas&modelCode=P0B3I&type=Software&subtype=Firmware&catName=C-MIDAS-MIXINGCONSOLES-DIGITALMIXERS&sEcho=6&iColumns=6&sColumns=%2C%2C%2C%2C%2C&iDisplayStart=0&iDisplayLength=15";
 var url2 = "https://www.midasconsoles.com/.rest/musictribe/v1/downloadcenter/solr-dldatatable?brandName=midas&modelCode=P0B3I&type=Software&subtype=Mac&catName=C-MIDAS-MIXINGCONSOLES-DIGITALMIXERS&sEcho=6&iColumns=6&sColumns=%2C%2C%2C%2C%2C&iDisplayStart=0&iDisplayLength=15";
 let data = await getData();
-console.log(data);
+//console.log(data);
 let widget = await createWidget(data);
 if (config.runsInWidget) {
   Script.setWidget(widget);
@@ -21,7 +21,7 @@ if (config.runsInWidget) {
   await showTableHTML(data);
   //Safari.open(`shortcuts://run-shortcut?name=SpringBoard`)
 }
-console.log(data);
+//console.log(data);
 
 /* async function showTable(midbehvers) {
   let isIphone = Device.isPhone();
@@ -30,7 +30,7 @@ console.log(data);
   for (const d of midbehvers) {
     let row = new UITableRow();
     let midbehstop = d.releaseNotes;
-    console.log(midbehstop)
+    console.log(midbehstop);
     let cell = row.addText(midbehstop);
     row.height = (isIphone ? 30 : 22) * d.stops.length / 3;
     cell.titleFont = titleFont;
@@ -62,7 +62,7 @@ async function showTableHTML(midasversions) {
   let view = new WebView();
   await view.loadHTML(html);
   let myview = await view.present();
-  console.log(myview);
+  //console.log(myview);
 }
 
 async function getData() {
@@ -83,7 +83,7 @@ async function createWidget(midasversions) {
   backGradient.locations = [0, 1];
   let files = FileManager.iCloud();
   const path = files.documentsDirectory() + "/header-logo-midas.svg";
-  console.log("Logopfad: " + path);
+  //console.log("Logopfad: " + path);
   const logoPNG = Image.fromFile(path);
   
   let wide = config.widgetFamily !== "small";
@@ -97,7 +97,7 @@ async function createWidget(midasversions) {
   stack.layoutVertically();
   
   let titleLine = stack.addStack();
-  let title = titleLine.addText("Midas Versions");
+  let title = titleLine.addText("M32 Releases");
   title.font = titleFont;
   titleLine.addSpacer();
  
@@ -106,23 +106,25 @@ async function createWidget(midasversions) {
     logo.imageSize = new Size(20, 20);
   } */
   
-  stack.addSpacer(10);
+  //stack.addSpacer(10);
   
   
-    let line = stack.addStack();
+    //let line = stack.addStack();
     if (wide) {
-      let firmware = line.addStack();
-      let Software = line.addStack();
-      console.log(`${mv.FirmwareVersion}`);
-      console.log(`${mv.FirmwareDownloadUrl}`);
-      console.log(`${mv.SoftwareVersion}`);
-      console.log(`${mv.SoftwareDownloadUrl}`);
-      let midfirmware = firmware.addText(`M32 Firmware: ${mv.FirmwareVersion}`);
-      let midSoft = line.addText(`M32 Software:  ${mv.SoftwareVersion}`);
+      let firmText = stack.addStack();
+      let firmware = stack.addStack();
+      let softText = stack.addStack();
+      let Software = stack.addStack();
+      let FirmText = firmText.addText('Firmware');
+      let midfirmware = firmware.addText(`${mv.FirmwareVersion}`);
+      let SoftText = softText.addText('M32-Edit');
+      let midSoft = Software.addText(`${mv.SoftwareVersion}`);
       //Dies ist ein TEst
+      FirmText.font = titleFont;
       midfirmware.font = normalFont;
+      SoftText.font = timeFont;
       midSoft.font = normalFont;
-      firmware.addSpacer();
+      //firmware.addSpacer();
     }
   return widget;
 }
@@ -147,6 +149,6 @@ function taggify(el, str, atts) {
   }
   let res = `<${el}` + (atts ? " " + attributes.join(" ") : "")
     + `>${str}</${el}>`;
-  console.log(res)
+  //console.log(res)
   return res
 }
