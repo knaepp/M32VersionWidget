@@ -51,7 +51,7 @@ This widget could be adjusted to observe other software, handbooks, firmware, dr
 1. coolaudio
 1. eurocom
 
-Each of those companies offer some kind of downloadable files which will be useful for some of us. I am personally only interested in midas, behringer, klarkteknik and tcelectronic but some of you might be interested in files from the other musictribe companies as well. Feel free to ask how to adjust the request-strings for those companies.
+Each of those companies offer some kind of downloadable files which will be useful for some of us. I am personally only interested in midas, behringer, klarkteknik and tcelectronic but some of you might be interested in files from the other musictribe companies as well. Feel free to ask how to adjust the request-strings for those companies. All named companies have no relationship to me/ us. The script has been developed to be informed when new releases of the software and the firmware will be published.
 
 Have fun!
 
