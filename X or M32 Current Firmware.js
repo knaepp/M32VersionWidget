@@ -1,3 +1,6 @@
+// Variables used by Scriptable.
+// These must be at the very top of the file. Do not edit.
+// icon-color: brown; icon-glyph: magic;
 // Created by Matthias Knäpper, IT Knäpper, Dortmund;
 // 2021, Dortmund;
 // Some code comes from an Article of c't magazine. Thank you for the inspiration.
@@ -120,12 +123,19 @@ function taggify(el, str, atts) {
 
 function printDate() {
   let datum = new Date();
-  thisYear = datum.getFullYear();
-  thisMonth = datum.getMonth()+1;
-  thisDay = datum.getDate();
-  thisHour = datum.getHours();
-  thisMinute = datum.getMinutes();
-  thisSecond = datum.getSeconds();
-  DatumString = `${thisYear}-${thisMonth}-${thisDay} ${thisHour}:${thisMinute}:${thisSecond}`;
+  let thisYear = datum.getFullYear();
+  let thisMonth = changeLength(datum.getMonth()+1);
+  let thisDay = changeLength(datum.getDate());
+  let thisHour = changeLength(datum.getHours());
+  let thisMinute = changeLength(datum.getMinutes());
+  let thisSecond = changeLength(datum.getSeconds());
+  let DatumString = `${thisYear}-${thisMonth}-${thisDay} ${thisHour}:${thisMinute}:${thisSecond}`;
   return DatumString
+}
+
+function changeLength(numVal) {
+  if (`${numVal}`.length == 1) {
+    numVal = "0" + `${numVal}`;
+  }
+  return numVal;
 }
