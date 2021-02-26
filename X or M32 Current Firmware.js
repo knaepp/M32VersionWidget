@@ -1,9 +1,12 @@
+// Variables used by Scriptable.
+// These must be at the very top of the file. Do not edit.
+// icon-color: brown; icon-glyph: magic;
 // Created by Matthias Knäpper, IT Knäpper, Dortmund;
 // 2021, Dortmund;
 // Some code comes from an Article of c't magazine. Thank you for the inspiration.
 // This widget requests the current firmware version of X/M32 mixing consoles
 // and the current version of the X/M32-Edit version (for macOS devices. Should be the same for
-// Windows and Linux devices as well)
+// Windows and Linux devices as well) using the rest-api from Musictribe website
 // Have Fun!;
 
 const timeFont = Font.boldSystemFont(12);
@@ -37,14 +40,14 @@ async function showTableHTML(midasversions) {
   span.start { text-decoration: underline;}
   td.stops { padding-bottom: 2em; }
 `;
-  let tr = taggify("tr",taggify("th", SoftwareTitle1) + taggify("th", SoftwartTitle2));
+  let tr = taggify("tr",taggify("th", SoftwareTitle1) + taggify("th", SoftwareTitle2));
   tr += taggify("tr", taggify("td", `<a href=${mv.FirmwareDownloadUrl}>${mv.FirmwareVersion}</a>`, { class: "stops" }) 
      + taggify("td", `<a href=${mv.SoftwareDownloadUrl}>${mv.SoftwareVersion}</a>`, { class: "stops" }));
   tBody.push(tr);
 
   let html = taggify("html", taggify("head", taggify("style", css, { type: "text/css" }))
     + taggify("body",
-      taggify("h1", `Aktuellste M32 Versionen`)
+      taggify("h1", `Current `+ ModelName + ` versions`)
       + taggify("table", tBody.join(''))));
   let view = new WebView();
   await view.loadHTML(html);
@@ -120,12 +123,19 @@ function taggify(el, str, atts) {
 
 function printDate() {
   let datum = new Date();
-  thisYear = datum.getFullYear();
-  thisMonth = datum.getMonth()+1;
-  thisDay = datum.getDate();
-  thisHour = datum.getHours();
-  thisMinute = datum.getMinutes();
-  thisSecond = datum.getSeconds();
-  DatumString = `${thisYear}-${thisMonth}-${thisDay} ${thisHour}:${thisMinute}:${thisSecond}`;
+  let thisYear = datum.getFullYear();
+  let thisMonth = changeLength(datum.getMonth()+1);
+  let thisDay = changeLength(datum.getDate());
+  let thisHour = changeLength(datum.getHours());
+  let thisMinute = changeLength(datum.getMinutes());
+  let thisSecond = changeLength(datum.getSeconds());
+  let DatumString = `${thisYear}-${thisMonth}-${thisDay} ${thisHour}:${thisMinute}:${thisSecond}`;
   return DatumString
+}
+
+function changeLength(numVal) {
+  if (`${numVal}`.length == 1) {
+    numVal = "0" + `${numVal}`;
+  }
+  return numVal;
 }
