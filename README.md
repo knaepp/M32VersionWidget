@@ -17,7 +17,41 @@ After adding the widget to your homescreen you will get one line for the firmwar
 
 ![Widet in iOS](./images/widget.png?raw=true)  
 
+This screenshot from my iPad shows first the current release of M32's firmware and second the most up to date release of M32 Edit (Mac).  
+
+The reloaded line shows the date and time when the wiget last has been updated. It will update every some minutes.  
+
 My platform is macOS and because of that I decided to search for the most current release for that platform. Under normal circumstances Musictribe will update the software for all other supported operatingsystems pretty close to that.
+
+Running inside Scriptable
+===
+
+If you run the widget inside of Scriptable you will get a small html-page offering two links to download the requested firmware or software directly to your phone or tablet. The picture shows an example of that simple webpage.
+
+![Widet in iOS](./images/scriptable.png?raw=true)
+
+Other Software from Musictribe
+===
+
+This widget could be adjusted to observe other software, handbooks, firmware, drivers and what ever you like coming from Musictribe. The companies that are currently part of Musictribe are
+
+1. musictribe
+1. midas
+1. klarkteknik
+1. lab.gruppen
+1. lake
+1. tannoy
+1. turbosound
+1. tcelectronic
+1. tchelicon
+1. behringer
+1. bugera
+1. oberheim
+1. auratone
+1. coolaudio
+1. eurocom
+
+Each of those companies offer some kind of downloadable files which will be useful for some of us. I am personally only interested in midas, behringer, klarkteknik and tcelectronic but some of you might be interested in files from the other musictribe companies as well. Feel free to ask how to adjust the request-strings for those companies.
 
 Have fun!
 
