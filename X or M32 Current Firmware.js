@@ -3,7 +3,7 @@
 // Some code comes from an Article of c't magazine. Thank you for the inspiration.
 // This widget requests the current firmware version of X/M32 mixing consoles
 // and the current version of the X/M32-Edit version (for macOS devices. Should be the same for
-// Windows and Linux devices as well)
+// Windows and Linux devices as well) using the rest-api from Musictribe website
 // Have Fun!;
 
 const timeFont = Font.boldSystemFont(12);
@@ -44,7 +44,7 @@ async function showTableHTML(midasversions) {
 
   let html = taggify("html", taggify("head", taggify("style", css, { type: "text/css" }))
     + taggify("body",
-      taggify("h1", `Aktuellste M32 Versionen`)
+      taggify("h1", `Current`+ ModelName + ` versions`)
       + taggify("table", tBody.join(''))));
   let view = new WebView();
   await view.loadHTML(html);
