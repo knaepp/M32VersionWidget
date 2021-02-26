@@ -37,14 +37,14 @@ async function showTableHTML(midasversions) {
   span.start { text-decoration: underline;}
   td.stops { padding-bottom: 2em; }
 `;
-  let tr = taggify("tr",taggify("th", SoftwareTitle1) + taggify("th", SoftwartTitle2));
+  let tr = taggify("tr",taggify("th", SoftwareTitle1) + taggify("th", SoftwareTitle2));
   tr += taggify("tr", taggify("td", `<a href=${mv.FirmwareDownloadUrl}>${mv.FirmwareVersion}</a>`, { class: "stops" }) 
      + taggify("td", `<a href=${mv.SoftwareDownloadUrl}>${mv.SoftwareVersion}</a>`, { class: "stops" }));
   tBody.push(tr);
 
   let html = taggify("html", taggify("head", taggify("style", css, { type: "text/css" }))
     + taggify("body",
-      taggify("h1", `Current`+ ModelName + ` versions`)
+      taggify("h1", `Current `+ ModelName + ` versions`)
       + taggify("table", tBody.join(''))));
   let view = new WebView();
   await view.loadHTML(html);
