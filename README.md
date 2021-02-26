@@ -15,7 +15,7 @@ The Widget
 
 After adding the widget to your homescreen you will get one line for the firmware release and one for the software M32-Edit.
 
-![Widet in iOS](/images/widget.png]  
+![Widet in iOS](/images/widget.png?raw=true]  
 
 My platform is macOS and because of that I decided to search for the most current release for that platform. Under normal circumstances Musictribe will update the software for all other supported operatingsystems pretty close to that.
 
