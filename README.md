@@ -2,7 +2,7 @@ M32VersionWidget
 ================
 This small widget looks up the newest version of M32 console firmware. The widget has been developed to be used on iOS devices using the [Scriptable](https://scriptable.app/) app.  
 
-Installation on your iOS Device
+Installation on your iOS or iPadOS device
 ====================
 First you have to install [Scriptable](https://scriptable.app/) on your device. Just download [Scriptable](https://apps.apple.com/de/app/scriptable/id1405459188) from the [Apple's](https://www.apple.com) Appstore.  
   
