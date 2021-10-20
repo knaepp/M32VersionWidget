@@ -45,9 +45,8 @@ This widget could be adjusted to observe other software, handbooks, firmware, dr
 1. [tc electronic](https://www.tcelectronic.com/)
 1. [TC Helicon](https://www.tc-helicon.com/)
 1. [Behringer](https://www.behringer.com/)
+1. [Aston Mirophones](https://www.astonmics.com)
 1. [Bugera](https://www.bugera-amps.com/)
-1. Oberheim
-1. [AURATONE](https://www.auratone.eu/)
 1. [coolaudio](https://www.coolaudio.com/)
 1. [EUROCOM](https://eurocom.musictribe.com/)
 

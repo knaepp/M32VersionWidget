@@ -9,6 +9,8 @@
 // Windows and Linux devices as well) using the rest-api from Musictribe website
 // Have Fun!;
 
+const fs = require('fs');
+var fileReader=new FileReader();
 const timeFont = Font.boldSystemFont(12);
 const normalFont = Font.mediumSystemFont(12);
 const titleFont = Font.boldSystemFont(12);
@@ -21,6 +23,7 @@ var SoftwareTitle1;
 var SoftwareType2;
 var SoftwartTitle2;
 
+let actualFirmwareVersion=readData("actualVersion.csv")
 let data = await getData();
 let widget = await createWidget(data);
 if (config.runsInWidget) {
@@ -28,6 +31,10 @@ if (config.runsInWidget) {
   Script.complete();
 } else {
   await showTableHTML(data);
+}
+
+readData(fileName){
+   fileReader.
 }
 
 async function showTableHTML(midasversions) {
